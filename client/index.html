@@ -4,13 +4,48 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+   <meta name="google-signin-client_id" content="376671315610-fpp2033jq5mpkqssqe367eekt13fiits.apps.googleusercontent.com">
    <link rel="stylesheet" href="./src/css/style.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <script src="https://apis.google.com/js/platform.js" async defer></script>
 
    <title>Smart Encyclopedia</title>
 </head>
 <body>
+      <div class="row" id="login">
+         <div class="col-md-3 offset-4 mt-5 shadow-lg p-3 mb-5 bg-white rounded" id="center"> 
+               <h1 class="text-center">SIGN IN</h1>
+                     <div class="icon-login">
+                  <img src="./images.png" id="logo" alt="">
+               </div>
+               <div class="row" id="dark">
+                           <div>
+                     <div class="g-signin2 " data-onsuccess="onSignIn"></div>
+                  </div>
+               </div>
+         </div>
+      </div>
    
-   <script src="src/js/main.js"></script>
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   <script>
+      function onSignIn(googleUser) {
+            let profile = googleUser.getBasicProfile();
+            let id_token = googleUser.getAuthResponse().id_token;
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://localhost:3000/signin');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+            };
+            xhr.send('idtoken=' + id_token);
+            }
+
+
+   var div = $("#login");
+    div.animate({height: '300px', opacity: '0.4'}, "slow");
+    div.animate({width: '300px', opacity: '0.8'}, "slow");
+   </script>
+
 </body>
 </html>
