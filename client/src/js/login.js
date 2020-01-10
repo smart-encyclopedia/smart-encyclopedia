@@ -47,5 +47,7 @@ $(document).on('click', '#start', function(even){
 $(document).on('click', '#logout', function(event){
     localStorage.removeItem('token')
     $('#login-hide').css({display: 'block'})
+    $('#main').hide()
+    $('#name').html('')
     loginanimate()
 })
