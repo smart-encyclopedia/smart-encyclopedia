@@ -4,6 +4,7 @@ const axiosInstance = axios.create({
 
 async function getThesaurusItems(word) {
    try {
+      console.log('ini di getThesaurusItems', word)
       const {data} = await axiosInstance.get(`/${word}`)
 
       $('#adjectives').html('')
@@ -12,19 +13,19 @@ async function getThesaurusItems(word) {
 
       data.adjectives.forEach(adj => {
          $('#adjectives').append(`
-            <li class="mr-4 list-style-none">${adj}</li>
+            <li class="mr-4 list-style-none each-word">${adj}</li>
          `)
       })
 
       data.adverbs.forEach(adv => {
          $('#adverbs').append(`
-            <li class="mr-4 list-style-none">${adv}</li>
+            <li class="mr-4 list-style-none each-word">${adv}</li>
          `)
       })
 
       data.nouns.forEach(noun => {
          $('#nouns').append(`
-            <li class="mr-4 list-style-none">${noun}</li>
+            <li class="mr-4 list-style-none each-word">${noun}</li>
          `)
       })
    }

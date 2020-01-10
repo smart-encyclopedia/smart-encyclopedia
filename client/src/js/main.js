@@ -3,12 +3,6 @@ $(window).on("load", function () {
 })
 
 $(document).ready(function () {
-    $(document).on('keyup',  function (event) {
-        if (event.keyCode === 13) {
-            $('#submit-btn').trigger('click');
-        }
-    });
-
     $("#parseImage").click(function () {
         $("#fullTexts").html("")
         $('.gambarSearched').html("")
@@ -34,7 +28,8 @@ $(document).ready(function () {
 
                 let hasilAll = '<p>'
                 for (let hasil of imageParsed.perWord) {
-                    hasilAll += '<span onClick=(alert("' + hasil + '"))>' + hasil + ' </span>'
+                    // hasilAll += '<span onClick=(alert("' + hasil + '"))>' + hasil + ' </span>'
+                    hasilAll += `<span class="each-word" data-toggle="collapse" data-target="#collapseExample" onclick="showThesaurusItems('${hasil}')">${hasil} </span>`
                 }
                 hasilAll += '</p>'
                 $('#perWord').html('')
@@ -66,42 +61,7 @@ $(document).ready(function () {
     })
 })
 
-$('#collapser').click(function() {
-   // console.log('this is collapse example .val()', $('#collapser').text())
-   getThesaurusItems($('#collapser').text().trim())
-})
-function processData() {
-    const text = $('#input-word').val();
-    const langTo = $('#lang-to').val();
-    let langOrigin = $('#lang-origin').val();
-
-    if (!langOrigin) {
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:3000/api/translator/detectLang",
-            data: {text},
-            dataType: "json",
-            success: function (response) {
-                langOrigin = response.lang;
-                translate(text, langOrigin, langTo);
-            }
-        });
-    } else {
-        translate(text, langOrigin, langTo);
-    }
-}
-
-function translate(text, from, to) {
-    $.ajax({
-        type: "POST",
-        url: "http://localhost:3000/api/translator/translate",
-        data: {
-            text, from, to:'id'
-        },
-        dataType: "json",
-        success: function (response) {
-            // $('#translated').html(`${response.text[0]}`);
-            return response.text[0]
-        }
-    });
+function showThesaurusItems(word) {
+    console.log('ini di showThesaurusItems', word)
+    getThesaurusItems(word.toLowerCase())
 }

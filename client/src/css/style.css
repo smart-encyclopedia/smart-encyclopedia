@@ -157,3 +157,7 @@
    list-style-position: inside;
    padding-left: 0.5rem;
 }
+
+.each-word {
+  cursor: pointer;
+}
