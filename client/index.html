@@ -41,8 +41,8 @@
    </style>
 </head>
 
-<body>
-   <div class="row" id="login">
+<body id="login">
+   <div class="row" id="login-hide">
       <div class="col-md-3 offset-4 mt-5 shadow-lg p-3 mb-5 bg-white rounded" id="center">
          <h1 class="text-center" id="start">SIGN IN CLICK HERE</h1>
          <div class="icon-login">
@@ -57,7 +57,10 @@
       </div>
    </div>
 
-   <div class="container-fluid" id="main" style="display: none">
+   <!-- <h1>Logout</h1> -->
+
+   <h1 id="name" class="text-center text-light"></h1>
+   <div class="container mt-5 shadow-lg p-3 mb-5 bg-white rounded" id="main" style="display: none">
       <form>
          <!-- <div class="row"> -->
 
@@ -115,7 +118,7 @@
             </div>
          </div>
          <div class="row loading">
-            <div class="col-md-2 col-md-5 col-md-offset-5"></div>
+            <div class="col-md-2 col-md-5 col-md-offset-5" ></div>
             <div class="loader" id="loaded">
 
             </div>
@@ -133,7 +136,7 @@
 
    <div class="collapse" id="collapseExample">
       <div class="d-flex justify-content-center">
-         <div class="d-flex justify-content-around border shadow rounded-lg py-4">
+         <div class="d-flex justify-content-around border shadow rounded-lg py-4 mb-5" style="background: white!Important;">
             <div id="thesaurus-adjective" class="d-flex flex-column px-4 mx-4">
                <h4>Adjectives</h4>
                <ul id="adjectives" class="mh-350px thesaurus-data d-flex flex-wrap flex-column">
