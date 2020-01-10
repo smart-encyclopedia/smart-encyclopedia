@@ -12,15 +12,28 @@ class ThesaurusController {
             message: 'The word need to be specified'
          }
 
-         const {data} = await axios.get(`/${req.params.word}/json`)
+         // console.log(req.params.word, '0ewngf939g03=====================================')
 
-         res.status(200).json({
-            adjectives: data.adjective.syn,
-            adverbs: data.adverb.syn,
-            nouns: data.noun.syn
-         })
+         const {data} = await axios.get(`/${req.params.word}/json`)
+         // console.log(data, 'this is data----------\n\n')
+
+         const outputs = {}
+
+         // console.log(data)
+
+         if(data.adjective) outputs.adjectives = data.adjective.syn
+         else outputs.adjectives = []
+
+         if(data.noun) outputs.nouns = data.noun.syn
+         else outputs.nouns = []
+
+         if(data.adverb) outputs.adverbs = data.adverb.syn
+         else outputs.adverbs = []
+         
+         res.status(200).json(outputs)
       }
       catch (error) {
+         console.log(Object.keys(error))
          next(error)
       }
    }

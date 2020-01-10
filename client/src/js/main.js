@@ -3,12 +3,6 @@ $(window).on("load", function () {
 })
 
 $(document).ready(function () {
-    $(document).on('keyup',  function (event) {
-        if (event.keyCode === 13) {
-            $('#submit-btn').trigger('click');
-        }
-    });
-
     $("#parseImage").click(function () {
         $("#fullTexts").html("")
         $('.gambarSearched').html("")
@@ -34,7 +28,8 @@ $(document).ready(function () {
 
                 let hasilAll = '<p>'
                 for (let hasil of imageParsed.perWord) {
-                    hasilAll += '<span onClick=(alert("' + hasil + '"))>' + hasil + ' </span>'
+                    // hasilAll += '<span onClick=(alert("' + hasil + '"))>' + hasil + ' </span>'
+                    hasilAll += `<span class="each-word" data-toggle="collapse" data-target="#collapseExample" onclick="showThesaurusItems('${hasil}')">${hasil} </span>`
                 }
                 hasilAll += '</p>'
                 $('#perWord').html('')
@@ -66,54 +61,7 @@ $(document).ready(function () {
     })
 })
 
-$('#collapser').click(function() {
-   // console.log('this is collapse example .val()', $('#collapser').text())
-   getThesaurusItems($('#collapser').text().trim())
-})
-function processData() {
-    const text = $('#input-word').val();
-    const langTo = $('#lang-to').val();
-    let langOrigin = $('#lang-origin').val();
-
-    if (!langOrigin) {
-        
-    } else {
-        translate(text, langOrigin, langTo);
-    }
-}
-
-async function getLang(text) {
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:3000/api/translator/detectLang",
-            data: {text},
-            dataType: "json",
-            success: async function (response) {
-                langOrigin = response.lang;
-                const hasilTranslate = await translate(text, langOrigin, 'id');
-                console.log(hasilTranslate, 'hasil promise translate')
-                resolve(hasilTranslate)
-            }
-        });
-    })
-}
-
-async function translate(text, from, to) {
-    return new Promise((resolve, rj) => {
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:3000/api/translator/translate",
-            data: {
-                text, from, to
-            },
-            dataType: "json",
-            success: function (response) {
-                console.log(response.text[0], 'ini resp');
-                
-                // $('#translated').html(`${response.text[0]}`);
-                resolve(response.text[0])
-            }
-        });
-    })
+function showThesaurusItems(word) {
+    console.log('ini di showThesaurusItems', word)
+    getThesaurusItems(word.toLowerCase())
 }
