@@ -59,3 +59,8 @@ $(document).ready(function () {
         })
     })
 })
+
+$('#collapser').click(function() {
+   // console.log('this is collapse example .val()', $('#collapser').text())
+   getThesaurusItems($('#collapser').text().trim())
+})

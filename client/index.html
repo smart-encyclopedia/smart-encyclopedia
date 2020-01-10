@@ -121,8 +121,40 @@
             </div>
          </div>
    </div>
+   
+   <div id="thesaurus" class="d-flex border justify-content-start">
+      <p id="popover">asdasdsa</p>
+      <p>zxczxczxczx</p>
+   </div>
+
+   <button id="collapser" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      wild
+   </button>
+
+   <div class="collapse" id="collapseExample">
+      <div class="d-flex justify-content-center">
+         <div class="d-flex justify-content-around border shadow rounded-lg py-4">
+            <div id="thesaurus-adjective" class="d-flex flex-column px-4 mx-4">
+               <h4>Adjectives</h4>
+               <ul id="adjectives" class="mh-350px thesaurus-data d-flex flex-wrap flex-column">
+               </ul>
+            </div>
+            <div id="thesaurus-nouns" class="d-flex flex-column px-4 mx-4">
+               <h4>Nouns</h4>
+               <ul id="nouns" class="mh-350px thesaurus-data d-flex flex-wrap flex-column">
+               </ul>
+            </div>
+            <div id="thesaurus-adverbs" class="d-flex flex-column px-4 mx-4">
+               <h4>Adverbs</h4>
+               <ul id="adverbs" class="mh-350px thesaurus-data d-flex flex-wrap flex-column">
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+
    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
       integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
       crossorigin="anonymous"></script>
@@ -130,6 +162,7 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"></script>
    <script src="./src/js/login.js"></script>
+   <script src="./src/js/thesaurus.js"></script>
    <script src="src/js/main.js"></script>
 </body>
 

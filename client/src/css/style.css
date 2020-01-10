@@ -108,6 +108,7 @@
     box-sizing: border-box;
     text-align: center;
 }
+
 #dark {
     text-align: center;
     margin: 0 37%;
@@ -137,4 +138,22 @@
    100% {
       transform: rotate(360deg);
    }
+}
+
+.mh-350px {
+   max-height: 350px;
+}
+
+.flex-wrap {
+   flex-wrap: wrap;
+}
+
+.list-style-none {
+   list-style: none;
+   list-style-type: none;
+}
+
+.thesaurus-data {
+   list-style-position: inside;
+   padding-left: 0.5rem;
 }
