@@ -16,6 +16,7 @@ function onSignIn(googleUser) {
             success: function(data){
                 localStorage.setItem('token', data.token)
                 $('#login').css({display: 'none'})
+                $('#main').show()
             }
         })
     })
