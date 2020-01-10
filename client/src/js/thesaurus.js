@@ -11,21 +11,24 @@ async function getThesaurusItems(word) {
       $('#nouns').html('')
       $('#adverbs').html('')
 
-      data.adjectives.forEach(adj => {
+      data.adjectives.forEach(async (adj) => {
+         let translateId = await getLang(adj);
          $('#adjectives').append(`
-            <li class="mr-4 list-style-none each-word">${adj}</li>
+            <li class="mr-4 list-style-none each-word">${adj} (<span class="italic">${translateId}</span>)</li>
          `)
       })
 
-      data.adverbs.forEach(adv => {
+      data.adverbs.forEach(async (adv) => {
+         let translateId = await getLang(adv);
          $('#adverbs').append(`
-            <li class="mr-4 list-style-none each-word">${adv}</li>
+            <li class="mr-4 list-style-none each-word">${adv} (<span class="italic">${translateId}</span>)</li>
          `)
       })
 
-      data.nouns.forEach(noun => {
+      data.nouns.forEach(async (noun) => {
+         let translateId = await getLang(noun);
          $('#nouns').append(`
-            <li class="mr-4 list-style-none each-word">${noun}</li>
+            <li class="mr-4 list-style-none each-word">${noun} (<span class="italic">${translateId}</span>)</li>
          `)
       })
    }

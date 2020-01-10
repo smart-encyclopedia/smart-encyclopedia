@@ -76,32 +76,44 @@ function processData() {
     let langOrigin = $('#lang-origin').val();
 
     if (!langOrigin) {
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:3000/api/translator/detectLang",
-            data: {text},
-            dataType: "json",
-            success: function (response) {
-                langOrigin = response.lang;
-                translate(text, langOrigin, langTo);
-            }
-        });
+        
     } else {
         translate(text, langOrigin, langTo);
     }
 }
 
-function translate(text, from, to) {
-    $.ajax({
-        type: "POST",
-        url: "http://localhost:3000/api/translator/translate",
-        data: {
-            text, from, to:'id'
-        },
-        dataType: "json",
-        success: function (response) {
-            // $('#translated').html(`${response.text[0]}`);
-            return response.text[0]
-        }
-    });
+async function getLang(text) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/api/translator/detectLang",
+            data: {text},
+            dataType: "json",
+            success: async function (response) {
+                langOrigin = response.lang;
+                const hasilTranslate = await translate(text, langOrigin, 'id');
+                console.log(hasilTranslate, 'hasil promise translate')
+                resolve(hasilTranslate)
+            }
+        });
+    })
+}
+
+async function translate(text, from, to) {
+    return new Promise((resolve, rj) => {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/api/translator/translate",
+            data: {
+                text, from, to
+            },
+            dataType: "json",
+            success: function (response) {
+                console.log(response.text[0], 'ini resp');
+                
+                // $('#translated').html(`${response.text[0]}`);
+                resolve(response.text[0])
+            }
+        });
+    })
 }

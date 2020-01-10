@@ -161,3 +161,7 @@
 .each-word {
   cursor: pointer;
 }
+
+.italic {
+  font-style: italic;
+}
