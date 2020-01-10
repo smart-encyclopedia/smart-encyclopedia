@@ -56,7 +56,7 @@ class ControlOCP {
                 }
             })
             .catch(err => {
-                console.log("ini gagal")
+                console.log("ini gagal", err, Object.keys(err))
                 res.status(500).json({ err, message: "internal server error" })
             })
     }
