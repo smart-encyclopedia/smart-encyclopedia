@@ -1,0 +1,114 @@
+#center{
+    height: 100px;
+    width: 500px;
+}
+
+#icon{
+    font-size: 250px;
+    color: orange;
+    -webkit-animation:colorchange 20s infinite alternate;
+}
+
+@-webkit-keyframes colorchange {
+    0% {
+      
+      color: #ee7752;
+    }
+    
+    10% {
+      
+      color: #e73c7e;
+    }
+    
+    20% {
+      
+      color: #23a6d5;
+    }
+    
+    30% {
+      
+      color: #d35400;
+    }
+    
+    40% {
+      
+      color: #ee7752;
+    }
+    
+    50% {
+      
+      color: #34495e;
+    }
+    
+    60% {
+      
+      color: #23a6d5;
+    }
+    
+    70% {
+      
+      color: #2980b9;
+    }
+    80% {
+   
+      color: #23d5ab;
+    }
+    
+    90% {
+   
+      color: #ee7752;
+    }
+    
+    100% {
+      
+      color: #23a6d5;
+    }
+  }
+
+#login{
+    height: 100vh;
+    padding-top: 150px;
+    transition: .9s;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    animation: gradientBG 15s ease infinite;
+    background-size: 400% 400%;
+}
+
+@keyframes gradientBG {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.bg{
+    transform: translate(0,0);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+#logo{
+    height: 100px;
+    width: 100px;
+}
+
+.hide{
+    opacity: 0;
+
+}
+
+.icon-login {
+    margin: 50px 100px;
+    box-sizing: border-box;
+    text-align: center;
+}
+#dark {
+    text-align: center;
+    margin: 0 37%;
+}

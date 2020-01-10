@@ -10,6 +10,7 @@ function userAuthentication(req, res, next) {
       const decoded = jwt.verify(req.headers.token, process.env.JWT_SECRET)
 
       req.userId = decoded.userId
+      next()
    }
    catch (error) {
       if(error.name == 'JsonWebTokenError') next({
